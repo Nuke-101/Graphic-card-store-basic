@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOPPING</title>
+    <link rel="stylesheet" href="style.css">
+</head> 
+<body>
+   <section class="navigation">
+       <img src="Images/logo.png" alt="">
+    <div class="navigationlinks">
+        <a href="#">HOME</a>
+        <a href="#">LOGIN</a>
+        <a href="#">CUSTOMER SERVICE</a>
+        <a href="#">CONTACT</a>
+        
+    </div>
+    <div class="spacer"></div>
+    <input type="search" placeholder="Search Products" class="searchfield">
+    <button class="viewcart" id="showmycart" onclick="showCart()">View cart</button>
+   </section>
+   <section class="main">
+       <div class="products">
+           <div class="productdescription"> 
+           <div class="productimg">
+               <div class="image">
+        <div class="slideshow-container">
+        
+            <div class="mySlides fade">
+                <!-- <div class="numbertext">1 / 3</div> -->
+                <img src="Images/16501.jpg" >
+                <!-- <div class="text">Caption Text</div> -->
+            </div>
+        
+            <div class="mySlides fade">
+                <!-- <div class="numbertext">2 / 3</div> -->
+                <img src="Images/16502.jpg" >
+                <!-- <div class="text">Caption Two</div> -->
+            </div>
+        
+            <div class="mySlides fade">
+                <!-- <div class="numbertext">3 / 3</div> -->
+                <img src="Images/16503.jpg" >
+                <!-- <div class="text">Caption Three</div> -->
+            </div>
+        
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+        </div>
+        <br>
+        
+        <div class="preview" style="text-align:center">
+            <div class="imgpreview" onclick="currentSlide(1)">
+                <img src="images/16501.jpg" alt="">
+            </div>
+            <div class="imgpreview" onclick="currentSlide(2)">
+                <img src="images/16502.jpg" alt="">
+
+            </div>
+            <div class="imgpreview" onclick="currentSlide(3)">
+                <img src="images/16503.jpg" alt="">
+
+            </div>
+        </div>
+               </div>
+           <select name="filter1" id="f1">
+               <option value="series1">Asus TUF</option>
+               <option value="series2">Asus ROG STRIX</option>
+           </select>
+           <select name="filter2" id="f2">
+               <option value="gfxcard1">GTX 1050TI</option>
+               <option value="gfxcard2">GTX 1660TI</option>
+           </select>
+           </div>
+           <div class="productinfo">
+              <h5 class="productname">MSI GeForce GTX 1650 D6 Ventus XS OCV1 4GB GDDR6 128 bit PCI Express x16 3.0 Gaming Graphic Card</h5> 
+              <div class="addtocart">
+                  <p class="price">$1129</p>
+                  <button class="atc">Add to cart</button>
+              </div>
+              <!-- <h6 class="tagline">ROG Strix GeForce RTX 3090 buffed-up design with chart-topping thermal performance.</h6> -->
+              <ul class="productfeatures">
+                  <li class="feature">Core/Memory : Boost Clock / Memory Speed, 1620 MHz / 12 Gbps</li>
+                  <li class="feature">DL-DVI-D x 1 / DisplayPort x 1 (v1.4) / HDMI 2.0b x 1
+                OC Scanner: An automated function finds the highest stable overclock settings.</li>
+                  <li class="feature">Kombustor: The latest DirectX versions benchmark supporting.</li>
+                  <li class="feature">Capture and share videos, screenshots, and livestreams with friends. Keep your drivers up to date and optimize your game
+                settings.</li>
+              </ul>
+          </div>
+       </div>
+        <h5 class="recomendedheader">You may also like...</h5>
+       <div class="recomendedproducts">
+        
+
+           <div class="productcard">
+               <img src="Images/asusp1.jpg" alt="" class="productcardimg">
+               <h5 class="productcardname">ASUS TUF Gaming A520M-Plus AMD AM4 Micro-ATX Motherboard</h5>
+               <div class="addtocartproduct">
+                <p class="price">$150</p>
+                <button class="atc">Add to cart</button>
+            </div>
+               
+           </div>
+           <div class="productcard">
+            <img src="Images/asusp2.jpg" alt="" class="productcardimg">
+            <h5 class="productcardname">ASUS ROG Strix B550-F AMD AM4 3rd Gen Ryzen ATX Gaming Motherboard</h5>
+            <div class="addtocartproduct">
+                <p class="price">$310</p>
+                <button class="atc">Add to cart</button>
+            </div>
+            
+        </div>
+        <div class="productcard">
+            <img src="Images/zotacp1.jpg" alt="" class="productcardimg">
+            <h5 class="productcardname">ZOTAC Gaming GeForce RTX 3060 Twin Edge OC 12GB GDDR6 Gaming Graphics Card</h5>
+            <div class="addtocartproduct">
+                <p class="price">$1100</p>
+                <button class="atc">Add to cart</button>
+            </div>
+            
+        </div>
+        <div class="productcard">
+            <img src="Images/relatedproduct3.jpg" alt="" class="productcardimg">
+            <h5 class="productcardname">GIGABYTE AUROS Z490 PRO AX Durable Motherboard</h5>
+            <div class="addtocartproduct">
+                <p class="price">$260</p>
+                <button class="atc">Add to cart</button>
+            </div>
+        </div>
+       </div>
+       </div>
+       <div class="cart" id="mycart">
+        <div class="cartheader">
+            <h5 class="cartheadertext">My cart</h5>
+            <button class="closecart"  onclick="hideCart()">
+                 &#10005
+            </button>
+        </div>
+        <div class="cartproduct">
+            <img src="Images/zotacp1.jpg" alt="" class="productimagecart">
+            <div class="productcartinfo">
+                <h5 class="productcardname">ZOTAC Gaming GeForce RTX 3060 Twin Edge OC 12GB GDDR6 Gaming Graphics Card</h5>
+                <div class="removecartproduct">
+                    <p class="price">$1100</p>
+                    <button class="rfc">remove</button>
+                </div>
+            </div>
+        </div>
+       </div>
+   </section>
+
+   
+   <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+<script>
+    // var cartbtn = document.getElementById("showmycart");
+    var cart = document.getElementById("mycart");
+
+    function showCart(){
+       cart.style.display="block"
+    };
+
+    function hideCart() {
+            cart.style.display = "none"
+        };
+</script>
+</body>
+</html>
