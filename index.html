@@ -65,20 +65,23 @@
             </div>
         </div>
                </div>
-           <select name="filter1" id="f1">
-               <option value="series1">Asus TUF</option>
-               <option value="series2">Asus ROG STRIX</option>
-           </select>
-           <select name="filter2" id="f2">
-               <option value="gfxcard1">GTX 1050TI</option>
-               <option value="gfxcard2">GTX 1660TI</option>
-           </select>
+            <select name="filter1" id="f1" onchange="filterA(this.value)">
+                <option value="mini">Mini(2 fan)</option>
+                <option value="full">Full(3 fan)</option>
+            </select>
+            <select name="filter2" id="f2">
+                <option value="gfxcard1">4 GB</option>
+                <option value="gfxcard2">6 GB</option>
+            </select>
            </div>
            <div class="productinfo">
               <h5 class="productname">MSI GeForce GTX 1650 D6 Ventus XS OCV1 4GB GDDR6 128 bit PCI Express x16 3.0 Gaming Graphic Card</h5> 
               <div class="addtocart">
                   <p class="price">$1129</p>
-                  <button class="atc">Add to cart</button>
+                                <button class="atc"
+                                    onclick="addToCart('MSI GeForce GTX 1650 D6 Ventus XS OCV1 4GB GDDR6 128 bit PCI Express x16 3.0 Gaming Graphic Card','$1129','Images/16501.jpg')">Add to
+                                    cart</button>
+
               </div>
               <!-- <h6 class="tagline">ROG Strix GeForce RTX 3090 buffed-up design with chart-topping thermal performance.</h6> -->
               <ul class="productfeatures">
@@ -97,10 +100,10 @@
 
            <div class="productcard">
                <img src="Images/asusp1.jpg" alt="" class="productcardimg">
-               <h5 class="productcardname">ASUS TUF Gaming A520M-Plus AMD AM4 Micro-ATX Motherboard</h5>
+               <h5 class="productcardname" >ASUS TUF Gaming A520M-Plus AMD AM4 Micro-ATX Motherboard</h5>
                <div class="addtocartproduct">
                 <p class="price">$150</p>
-                <button class="atc">Add to cart</button>
+                <button class="atc" onclick="addToCart('ASUS TUF Gaming A520M-Plus AMD AM4 Micro-ATX Motherboard','$150','Images/asusp1.jpg')">Add to cart</button>
             </div>
                
            </div>
@@ -109,7 +112,10 @@
             <h5 class="productcardname">ASUS ROG Strix B550-F AMD AM4 3rd Gen Ryzen ATX Gaming Motherboard</h5>
             <div class="addtocartproduct">
                 <p class="price">$310</p>
-                <button class="atc">Add to cart</button>
+                                <button class="atc"
+                                    onclick="addToCart('ASUS ROG Strix B550-F AMD AM4 3rd Gen Ryzen ATX Gaming Motherboard','$310','Images/asusp2.jpg')">Add to
+                                    cart</button>
+
             </div>
             
         </div>
@@ -118,7 +124,10 @@
             <h5 class="productcardname">ZOTAC Gaming GeForce RTX 3060 Twin Edge OC 12GB GDDR6 Gaming Graphics Card</h5>
             <div class="addtocartproduct">
                 <p class="price">$1100</p>
-                <button class="atc">Add to cart</button>
+                                <button class="atc"
+                                    onclick="addToCart('ZOTAC Gaming GeForce RTX 3060 Twin Edge OC 12GB GDDR6 Gaming Graphics Card','$1100','Images/zotacp1.jpg')">Add to
+                                    cart</button>
+
             </div>
             
         </div>
@@ -127,28 +136,22 @@
             <h5 class="productcardname">GIGABYTE AUROS Z490 PRO AX Durable Motherboard</h5>
             <div class="addtocartproduct">
                 <p class="price">$260</p>
-                <button class="atc">Add to cart</button>
+                            <button class="atc"
+                                onclick="addToCart('GIGABYTE AUROS Z490 PRO AX Durable Motherboard','$260','Images/relatedproduct3.jpg')">Add to
+                                cart</button>
+
             </div>
         </div>
        </div>
        </div>
        <div class="cart" id="mycart">
-        <div class="cartheader">
+        <div class="cartheader" id='chead'>
             <h5 class="cartheadertext">My cart</h5>
             <button class="closecart"  onclick="hideCart()">
                  &#10005
             </button>
         </div>
-        <div class="cartproduct">
-            <img src="Images/zotacp1.jpg" alt="" class="productimagecart">
-            <div class="productcartinfo">
-                <h5 class="productcardname">ZOTAC Gaming GeForce RTX 3060 Twin Edge OC 12GB GDDR6 Gaming Graphics Card</h5>
-                <div class="removecartproduct">
-                    <p class="price">$1100</p>
-                    <button class="rfc">remove</button>
-                </div>
-            </div>
-        </div>
+        
        </div>
    </section>
 
@@ -192,6 +195,51 @@
     function hideCart() {
             cart.style.display = "none"
         };
+</script>
+
+<script>
+    function filterA(value) {
+        if (value.length == 0) {
+          //  document.getElementById("f2").innerHTML = "Please select a filter";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("f2").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "filterList.php?value=" + value, true);
+            xmlhttp.send();
+        }
+    }
+
+</script>
+
+<script>
+    function addToCart(name,price,path) {
+        if (name.length == 0) {
+            //  document.getElementById("f2").innerHTML = "Please select a filter";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var h=document.getElementById('chead');
+                    h.insertAdjacentHTML('afterend',this.responseText);                    
+                }
+            };
+            xmlhttp.open("GET", "addToCart.php?name=" + name+"&price="+price+"&path="+path, true);
+            xmlhttp.send();
+        }
+    }
+
+</script>
+<script>
+    function removeFromCart(id) {
+        console.log(id);
+        document.getElementById(id).remove();
+    }
 </script>
 </body>
 </html>
