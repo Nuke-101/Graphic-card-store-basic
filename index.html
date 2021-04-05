@@ -17,7 +17,11 @@
         
     </div>
     <div class="spacer"></div>
-    <input type="search" placeholder="Search Products" class="searchfield">
+    <div class="searchContainer">
+        <input type="search" placeholder="Search Products" class="searchfield" onkeyup="showResult(this.value)">
+        <div id="search"></div>
+    </div>
+   
     <button class="viewcart" id="showmycart" onclick="showCart()">View cart</button>
    </section>
    <section class="main">
@@ -241,5 +245,27 @@
         document.getElementById(id).remove();
     }
 </script>
+
+<script>
+    function showResult(str) {
+        if (str.length == 0) {
+            document.getElementById("search").innerHTML = "";
+            document.getElementById("search").style.border = "0px";
+            return;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var searchfield = document.getElementById("search");
+                searchfield.innerHTML = this.responseText;
+                // searchfield.style.border = "1px solid #A5ACB2";
+                // searchfield.style.position = "absolute";
+            }
+        }
+        xmlhttp.open("GET", "searchResults.php?q=" + str, true);
+        xmlhttp.send();
+    }
+</script>
+
 </body>
 </html>
